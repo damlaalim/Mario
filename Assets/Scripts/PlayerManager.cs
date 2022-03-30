@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour
 
     private void HeartCreate()
     {
-        int objectXPosition = 350;
+        int objectXPosition = 390;
 
         for (int i = 0; i < PlayerData.Instance.Health; i++)
         {
