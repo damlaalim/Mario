@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        moveRight = true;
+        moveRight = false;
         _rigidbody = GetComponent<Rigidbody2D>(); 
     }
     
