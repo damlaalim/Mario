@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    
     [SerializeField] private float speed;
     private Rigidbody2D _rigidbody;
     private bool moveRight;
