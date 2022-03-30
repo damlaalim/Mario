@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    
-    [SerializeField] private float speed;
+    public float speed;
     private Rigidbody2D _rigidbody;
     private bool moveRight;
     
@@ -18,9 +17,9 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         moveRight = true;
-        _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody2D>(); 
     }
-
+    
     void Update()
     {
         Run();
@@ -30,6 +29,5 @@ public class EnemyController : MonoBehaviour
     {
         var move = moveRight ? Vector3.right : -Vector3.right;
         transform.position += move * speed * Time.deltaTime;
-        // animator.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
     }
 }

@@ -12,6 +12,8 @@ public class BlockController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        col.GetComponent<Rigidbody2D>().velocity = Vector2.down * 15f;
+        
         switch (isBreakable)
         {
             case true:

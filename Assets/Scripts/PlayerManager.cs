@@ -16,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private List<GameObject> life;
     [SerializeField] private Rigidbody2D playerRigid;
     [SerializeField] private Animator animator;
-    [SerializeField] private Collider2D fallTrigger;
+    [SerializeField] private Collider2D fallTrigger; 
+    [SerializeField] private Collider2D playerCollider; 
     [SerializeField] private Canvas canvasGameOver;
 
     private void Awake()
@@ -68,7 +69,8 @@ public class PlayerManager : MonoBehaviour
         animator.SetBool("IsDead", true);
         playerRigid.velocity = Vector2.up * 15f;
         fallTrigger.enabled = false;
-
+        playerCollider.enabled = false;
+        
         HealthUpdate();
 
         if (PlayerPrefs.GetInt("Health") <= 0)

@@ -9,6 +9,9 @@ public class KillDetector : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-       PlayerManager.Instance.KillPlayer();
+        if (other.gameObject.tag == "Enemy")
+        {
+            PlayerManager.Instance.KillPlayer();
+        }
     }
 }
