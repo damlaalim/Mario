@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement; 
 
 public class PlayerManager : MonoBehaviour
 {
@@ -32,6 +32,14 @@ public class PlayerManager : MonoBehaviour
         HeartCreate();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+            KillPlayer();
+        if (Input.GetKeyDown(KeyCode.L))
+            SceneManager.LoadScene("SampleScene");
+    }
+ 
     private void HeartCreate()
     {
         int objectXPosition = 390;
