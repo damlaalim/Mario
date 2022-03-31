@@ -10,8 +10,17 @@ public class CameraController : MonoBehaviour
     
     void Update()
     {
-        targetPosition =
-            new Vector3(player.position.x, cameraOffset.y != 0 ? cameraOffset.y : transform.position.y, cameraOffset.z);
+        var playerViewportPos = Camera.main.WorldToViewportPoint(player.transform.position);
+        if (playerViewportPos.x >= 0.5f)
+        {
+            TargetFollow();
+        }
+    }
+
+    void TargetFollow()
+    {
+        var cameraOffsetY = cameraOffset.y != 0 ? cameraOffset.y : transform.position.y;
+        targetPosition = new Vector3(player.position.x, cameraOffsetY, cameraOffset.z);
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 }
