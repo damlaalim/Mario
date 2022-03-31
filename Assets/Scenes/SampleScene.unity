@@ -8506,14 +8506,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 7
-  checkRadius: 2.34
-  jumpTime: 0.32
-  feetPos: {fileID: 501467968}
   animator: {fileID: 876261841}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
+  jumpHeight: 5
+  buttonTime: 0.5
+  cancelRate: 100
 --- !u!114 &876261844
 MonoBehaviour:
   m_ObjectHideFlags: 0

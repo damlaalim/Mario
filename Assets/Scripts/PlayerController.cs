@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,18 +10,22 @@ public class PlayerController : MonoBehaviour
     private float _jumpTimeCounter;
     private Vector3 _velocity;
     private Rigidbody2D _rigidbody;
-
+    
     [SerializeField] float speed;
-    [SerializeField] float jumpForce;
-    [SerializeField] float checkRadius;
-    [SerializeField] float jumpTime;
-    [SerializeField] Transform feetPos;
     [SerializeField] Animator animator;
-    [SerializeField] LayerMask whatIsGround;
+    
+    [SerializeField] float jumpHeight = 5;
+    [SerializeField] float buttonTime = 0.5f;
+    [SerializeField] float cancelRate = 100;
+    
+    private float jumpTime;
+    private bool jumping;
+    private bool jumpCancelled; 
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        // _jumpTimeCounter = jumpTime;
     }
 
     private void Update()
@@ -30,28 +35,55 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
+    private void FixedUpdate()
+    {
+        if(jumpCancelled && jumping && _rigidbody.velocity.y > 0)
+        {
+            _rigidbody.AddForce(Vector2.down * cancelRate);
+        }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Floor")
+        {
+            animator.SetBool("IsJumping", false);
+            _isGrounded = true;
+        }
+    } 
+    
     private void Jump()
     {
-        _isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
-
-        if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             animator.SetBool("IsJumping", true);
-            _jumpTimeCounter = jumpTime;
-            _rigidbody.velocity = Vector2.up * jumpForce; 
-        }
 
-        if (Input.GetKey(KeyCode.Space) && animator.GetBool("IsJumping"))
+            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * _rigidbody.gravityScale));
+            _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            jumping = true;
+            jumpCancelled = false;
+            jumpTime = 0;
+
+            _isGrounded = false;
+        }
+        
+        if (jumping)
         {
-            if (_jumpTimeCounter > 0)
-            {
-                _rigidbody.velocity = Vector2.up * jumpForce;
-                _jumpTimeCounter -= Time.deltaTime;
-                animator.SetBool("IsJumping", true);
-            }
-        }
+            animator.SetBool("IsJumping", true);
 
-        if (animator.GetBool("IsJumping") && Mathf.Approximately(_rigidbody.velocity.y, 0))
+            jumpTime += Time.deltaTime;
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                jumpCancelled = true;
+            }
+            if (jumpTime > buttonTime)
+            {
+                jumping = false;
+            }
+            _isGrounded = false;
+        }
+        
+        if(animator.GetBool("IsJumping") && _isGrounded)
             animator.SetBool("IsJumping", false);
     }
 
