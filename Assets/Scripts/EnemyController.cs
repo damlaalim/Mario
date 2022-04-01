@@ -5,53 +5,34 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public static EnemyController Instance { get; private set; }
     [SerializeField] private Animator animator;
-    public float speed;
+    [SerializeField] float speed;
     private Rigidbody2D _rigidbody;
     private bool moveRight;
+    private bool isDead;
     
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     private void Start()
     {
         moveRight = false;
-        _rigidbody = GetComponent<Rigidbody2D>(); 
-    }
-    
-    private void Update()
-    {
-        Run();
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Run()
+    private void Update()
     {
-        var move = moveRight ? Vector3.right : -Vector3.right;
-        transform.position += move * speed * Time.deltaTime;
+        if (isDead)
+            return;
+        
+        EnemyManager.Instance.Run(moveRight, gameObject, speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        moveRight = !moveRight;
+        moveRight = EnemyManager.Instance.MoveChange(moveRight);
     }
-    
-    public void Dead(Rigidbody2D playerRigid)
-    {
-        animator.SetBool("IsDead", true);
-        
-        GetComponent<BoxCollider2D>().enabled = false;
 
-        playerRigid.velocity = Vector2.up * 15f;
-        speed = 0f;
-        StartCoroutine(EnemyDestroy());
-    }
-    
-    IEnumerator EnemyDestroy()
+    public void DeadEnemy(GameObject player)
     {
-        yield return new WaitForSeconds(1);
-        Destroy(gameObject);
+        isDead = true;
+        EnemyManager.Instance.Dead(player.GetComponent<Rigidbody2D>(), animator, gameObject);
     }
 }

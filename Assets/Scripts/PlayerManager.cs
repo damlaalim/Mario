@@ -19,8 +19,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private Canvas canvasGameOver;
 
-    public bool isDead = false;
-    public bool playerIsBig = false;
+    public bool isDead;
+    public bool playerIsBig;
     
     private void Awake()
     {
@@ -37,12 +37,17 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        ShortcutControl();
+    }
+
+    private void ShortcutControl()
+    {
         if (Input.GetKeyDown(KeyCode.O))
             KillPlayer();
         if (Input.GetKeyDown(KeyCode.L))
             SceneManager.LoadScene("SampleScene");
     }
- 
+    
     private void HeartCreate()
     {
         int objectXPosition = 1850;
@@ -79,9 +84,9 @@ public class PlayerManager : MonoBehaviour
         DecreaseHealth();
 
         if (IsGameOver())
-            StartCoroutine(Wait("gameOver", 3f));
+            StartCoroutine(SceneLoad("gameOver", 3f));
         else
-            StartCoroutine(Wait("", 2f));
+            StartCoroutine(SceneLoad("", 2f));
     }
 
     private bool IsGameOver()
@@ -89,7 +94,7 @@ public class PlayerManager : MonoBehaviour
         return PlayerData.Instance.Health == 0;
     }
 
-    IEnumerator Wait(string state, float delay = 0)
+    IEnumerator SceneLoad(string state, float delay = 0)
     {
         yield return new WaitForSeconds(delay);
 
