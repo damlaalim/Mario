@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
-    [Range(1, 3)] [SerializeField] private int maxHealth;
+    [Range(1, 5)] [SerializeField] private int maxHealth;
     [SerializeField] private Sprite heart;
     [SerializeField] private GameObject heartParent;
     [SerializeField] private List<GameObject> life;
@@ -19,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private Canvas canvasGameOver;
 
+    public bool isDead = false;
     public bool playerIsBig = false;
     
     private void Awake()
@@ -68,6 +69,8 @@ public class PlayerManager : MonoBehaviour
 
     public void KillPlayer()
     {
+        isDead = true;
+        
         animator.SetBool("IsDead", true);
         playerRigid.velocity = Vector2.up * 15f;
         fallTrigger.enabled = false;

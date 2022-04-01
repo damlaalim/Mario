@@ -25,11 +25,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        // _jumpTimeCounter = jumpTime;
     }
 
     private void Update()
-    { 
+    {
+        if (PlayerManager.Instance.isDead)
+            return;
+        
         Run();
         ChangeWalkDirection();
         Jump();
