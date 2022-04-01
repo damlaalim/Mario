@@ -66,7 +66,6 @@ public class PlayerManager : MonoBehaviour
 
     public void KillPlayer()
     {
-        Debug.Log("kill player");
         animator.SetBool("IsDead", true);
         playerRigid.velocity = Vector2.up * 15f;
         fallTrigger.enabled = false;
