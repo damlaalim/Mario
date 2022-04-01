@@ -9,24 +9,37 @@ public class BlockController : MonoBehaviour
     [SerializeField] private GameObject block;
     [SerializeField] private SpriteRenderer blockSprite;
     [SerializeField] private Sprite newBlock;
-
+    [SerializeField] private float blockUpTime;
+    private bool playerIsBig;
+    
     private void OnTriggerEnter2D(Collider2D col)
     {
+        playerIsBig = PlayerManager.Instance.playerIsBig;
+
         col.GetComponent<Rigidbody2D>().velocity = Vector2.down * 15f;
+
+        BlockTypeSwitch();
         
+    }
+
+    private void BlockTypeSwitch()
+    {
         switch (isBreakable)
         {
-            case true:
+            case true when playerIsBig:
                 BlockBreak();
-                break;
+                return;
             case false:
                 BlockChange();
                 break;
         }
-    }
 
+        StartCoroutine(BlockMove());
+    }
+    
     private void BlockBreak()
     {
+        //kırılma animasyonu
         StartCoroutine(DestroyAfterDelay(.1f));
         
         IEnumerator DestroyAfterDelay(float delay = 0)
@@ -39,5 +52,30 @@ public class BlockController : MonoBehaviour
     private void BlockChange()
     {
         blockSprite.sprite = newBlock;
+    }
+
+    private IEnumerator BlockMove()
+    {
+        Vector3 startingPos = block.transform.position;
+        Vector3 finalPos = block.transform.position + (block.transform.up * .3f);
+
+        float elapsedTime = 0;
+        while (elapsedTime < blockUpTime)
+        {
+            block.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / blockUpTime));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        elapsedTime = 0;
+        while (elapsedTime < blockUpTime)
+        {
+            block.transform.position = Vector3.Lerp(finalPos, startingPos, (elapsedTime / blockUpTime));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        block.transform.position = startingPos;
+
     }
 }

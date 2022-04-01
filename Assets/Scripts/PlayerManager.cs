@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private Canvas canvasGameOver;
 
+    public bool playerIsBig = false;
+    
     private void Awake()
     {
         Instance = this;
@@ -42,7 +44,7 @@ public class PlayerManager : MonoBehaviour
  
     private void HeartCreate()
     {
-        int objectXPosition = 390;
+        int objectXPosition = 1850;
 
         for (int i = 0; i < PlayerData.Instance.Health; i++)
         {
@@ -51,9 +53,9 @@ public class PlayerManager : MonoBehaviour
             newImage.sprite = heart;
             newObject.GetComponent<RectTransform>().SetParent(heartParent.transform);
             newObject.SetActive(true);
-            newObject.GetComponent<RectTransform>().position = new Vector3(objectXPosition, 670, 0);
-            newObject.GetComponent<RectTransform>().sizeDelta = new Vector2(32, 32);
-            objectXPosition -= 50;
+            newObject.GetComponent<RectTransform>().position = new Vector3(objectXPosition, 1020, 0);
+            newObject.GetComponent<RectTransform>().sizeDelta = new Vector2(75, 75);
+            objectXPosition -= 100;
 
             life.Add(newObject);
         }

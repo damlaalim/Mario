@@ -75,6 +75,7 @@ MonoBehaviour:
   block: {fileID: 8495546872273989674}
   blockSprite: {fileID: 0}
   newBlock: {fileID: 0}
+  blockUpTime: 0.1
 --- !u!1 &8495546872273989674
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ Animator:
   m_GameObject: {fileID: 8495546872273989674}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e2f4565cf6c4384ab2b81275702e71f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
