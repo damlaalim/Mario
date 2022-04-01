@@ -10,8 +10,12 @@ public class KillDetector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
-        {
             PlayerManager.Instance.KillPlayer();
-        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+            EnemyController.Instance.Dead(GetComponent<Rigidbody2D>());
     }
 }

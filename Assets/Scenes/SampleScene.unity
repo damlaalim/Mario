@@ -11894,6 +11894,7 @@ MonoBehaviour:
   fallTrigger: {fileID: 2130676396}
   playerCollider: {fileID: 876261837}
   canvasGameOver: {fileID: 1958109632}
+  playerIsBig: 0
 --- !u!4 &1177937424
 Transform:
   m_ObjectHideFlags: 0
@@ -20800,6 +20801,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 715710951}
     m_Modifications:
+    - target: {fileID: 2209642797930565319, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209642797930565319, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209642797930565319, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3339096764130412941, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -20856,6 +20869,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: E_Mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 8749927416800122202, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
+      propertyPath: m_UseColliderMask
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749927416800122202, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
+      propertyPath: m_UseOneWayGrouping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9032375329272444442, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -20866,6 +20887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 956816004049668122, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
+    - {fileID: 8749927416800122202, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 178266d1f9f7f7e4a9c80eec05af8cfd, type: 3}
 --- !u!1001 &8088453740067898246
 PrefabInstance:
