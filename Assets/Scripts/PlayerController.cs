@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] float speed;
     [SerializeField] Animator animator;
-    
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float buttonTime = 0.5f;
     [SerializeField] float cancelRate = 100;

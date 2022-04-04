@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI textTime;
     [SerializeField] private float time;
 
     private void Update()
@@ -23,7 +22,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            textTime.text = string.Format("{0:00}:{1:00}", 0, 0);
+            CanvasManager.Instance.TextTimeChange(0,0);
             PlayerManager.Instance.KillPlayer();
         }
     }
@@ -32,6 +31,6 @@ public class GameManager : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(time / 60);
         float seconds = Mathf.FloorToInt(time % 60);
-        textTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        CanvasManager.Instance.TextTimeChange(minutes, seconds);
     }
 }

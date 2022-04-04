@@ -11,6 +11,8 @@ public class BlockController : MonoBehaviour
     [SerializeField] private Sprite newBlock;
     [SerializeField] private float blockUpTime;
     private bool playerIsBig;
+    [SerializeField] bool blockIsChange;
+    [SerializeField] private Animator ItemAnimator;
     
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -24,6 +26,9 @@ public class BlockController : MonoBehaviour
 
     private void BlockTypeSwitch()
     {
+        if (blockIsChange)
+            return;
+        
         switch (isBreakable)
         {
             case true when playerIsBig:
@@ -39,7 +44,6 @@ public class BlockController : MonoBehaviour
     
     private void BlockBreak()
     {
-        //kırılma animasyonu
         StartCoroutine(DestroyAfterDelay(.1f));
         
         IEnumerator DestroyAfterDelay(float delay = 0)
@@ -51,6 +55,12 @@ public class BlockController : MonoBehaviour
 
     private void BlockChange()
     {
+        blockIsChange = true;
+        
+        PlayerManager.Instance.coin++;
+        CanvasManager.Instance.TextCoinChange();
+        
+        ItemAnimator.SetBool("IsBreak", true);
         blockSprite.sprite = newBlock;
     }
 

@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
 
     public bool isDead;
     public bool playerIsBig;
+    public int coin;
     
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        coin = 0;
+        
         if (PlayerData.Instance.Health == 0)
             PlayerData.Instance.Health = maxHealth;
 
