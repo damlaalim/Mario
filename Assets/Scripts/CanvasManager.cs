@@ -8,6 +8,7 @@ public class CanvasManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textTime;
     [SerializeField] private TextMeshProUGUI textCoin;
+    [SerializeField] private TextMeshProUGUI textScore;
 
     private void Awake()
     {
@@ -22,5 +23,10 @@ public class CanvasManager : MonoBehaviour
     public void TextCoinChange()
     {
         textCoin.text = PlayerManager.Instance.coin.ToString();
+    }
+
+    public void TextScoreChange()
+    {
+        textScore.text = PlayerManager.Instance.score.ToString();
     }
 }

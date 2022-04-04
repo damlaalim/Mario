@@ -17,10 +17,7 @@ public class EnemyManager : MonoBehaviour
         enemy.transform.position += move * speed * Time.deltaTime;
     }
 
-    public bool MoveChange(bool move)
-    {
-        return !move;
-    }
+    public bool MoveChange(bool move) => !move;
 
     public void DeadEnemyCall(GameObject enemy, GameObject player)
     {
@@ -29,6 +26,9 @@ public class EnemyManager : MonoBehaviour
     
     public void Dead(Rigidbody2D playerRigid, Animator animator, GameObject enemy)
     {
+        PlayerManager.Instance.score += GameManager.Instance.mushroomScore;
+        CanvasManager.Instance.TextScoreChange();
+        
         animator.SetBool("IsDead", true);
         
         enemy.GetComponent<BoxCollider2D>().enabled = false;

@@ -10,10 +10,17 @@ public class BlockController : MonoBehaviour
     [SerializeField] private SpriteRenderer blockSprite;
     [SerializeField] private Sprite newBlock;
     [SerializeField] private float blockUpTime;
-    private bool playerIsBig;
     [SerializeField] bool blockIsChange;
-    [SerializeField] private Animator ItemAnimator;
-    
+    [SerializeField] private GameObject Coin;
+    [SerializeField] private GameObject RedMushroom;
+    [SerializeField] private InsideItem item;
+    private bool playerIsBig;
+
+    private void Awake()
+    {
+        InsideItemSettings();
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         playerIsBig = PlayerManager.Instance.playerIsBig;
@@ -51,19 +58,58 @@ public class BlockController : MonoBehaviour
             yield return new WaitForSeconds(delay);
             Destroy(block);
         }
+
+        PlayerManager.Instance.score += GameManager.Instance.blockBreakScore;
+        CanvasManager.Instance.TextScoreChange();
     }
 
     private void BlockChange()
     {
+        if (item == InsideItem.Coin)
+        {
+            CoinSettings();
+        }
+        else if (item == InsideItem.Mushroom)
+        {
+            RedMushroomSettings();
+        }
+        
         blockIsChange = true;
-        
-        PlayerManager.Instance.coin++;
-        CanvasManager.Instance.TextCoinChange();
-        
-        ItemAnimator.SetBool("IsBreak", true);
         blockSprite.sprite = newBlock;
     }
 
+    private void CoinSettings()
+    {
+        PlayerManager.Instance.coin++;
+        CanvasManager.Instance.TextCoinChange();
+        Coin.GetComponent<Animator>().SetBool("IsBreak", true);
+        PlayerManager.Instance.score += GameManager.Instance.CoinScore;
+        CanvasManager.Instance.TextScoreChange();
+    }
+
+    private void RedMushroomSettings()
+    {
+        RedMushroom.GetComponent<Animator>().SetBool("IsBreak", true);
+        
+        RedMushroom.GetComponent<BoxCollider2D>().enabled = true;
+        ItemManager.Instance.MoveChange(RedMushroom);
+    }
+
+    private void InsideItemSettings()
+    {
+        if (Coin == null || RedMushroom == null)
+            return;
+        
+        if (item == InsideItem.Mushroom)
+        {
+            Coin.SetActive(false);
+        }
+        else if (item == InsideItem.Coin)
+        {
+            RedMushroom.SetActive(false);
+        }
+    }
+    
     private IEnumerator BlockMove()
     {
         Vector3 startingPos = block.transform.position;
@@ -89,3 +135,9 @@ public class BlockController : MonoBehaviour
 
     }
 }
+
+public enum InsideItem
+{
+    Coin,
+    Mushroom
+};
