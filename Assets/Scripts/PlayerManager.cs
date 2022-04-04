@@ -19,6 +19,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private Canvas canvasGameOver;
 
+    public GameObject smallCharacter;
+    public GameObject bigCharacter;
+    
     public bool isDead;
     public bool playerIsBig;
     public int coin;
@@ -79,6 +82,13 @@ public class PlayerManager : MonoBehaviour
 
     public void KillPlayer()
     {
+        if (playerIsBig)
+        {
+            Debug.Log("big");
+            playerIsBig = false;
+            return;
+        }
+        
         isDead = true;
         
         animator.SetBool("IsDead", true);

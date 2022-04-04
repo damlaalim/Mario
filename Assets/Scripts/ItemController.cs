@@ -27,6 +27,8 @@ public class ItemController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             PlayerManager.Instance.playerIsBig = true;
+            collision.gameObject.GetComponent<Animator>().SetBool("IsGrow", true);
+
             PlayerManager.Instance.score += GameManager.Instance.redMushroomScore;
             CanvasManager.Instance.TextScoreChange();
             Destroy(gameObject);

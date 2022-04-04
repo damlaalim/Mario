@@ -103,4 +103,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") == 1)
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
     }
+
+    private void CharacterGrow()
+    {
+        var position = PlayerManager.Instance.smallCharacter.transform.position;
+        PlayerManager.Instance.smallCharacter.SetActive(false);
+        PlayerManager.Instance.bigCharacter.transform.position = position;
+        PlayerManager.Instance.bigCharacter.SetActive(true);
+    }
 }
