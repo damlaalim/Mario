@@ -12,14 +12,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     
     [SerializeField] float speed;
-    [SerializeField] Animator animator;
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float buttonTime = 0.5f;
     [SerializeField] float cancelRate = 100;
-    
+    [SerializeField] Animator animator;
+
     private float jumpTime;
     private bool jumping;
-    private bool jumpCancelled; 
+    private bool jumpCancelled;
+    private bool dontMove = false;
 
     private void Start()
     {
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerManager.Instance.isDead)
+        if (PlayerManager.Instance.isDead || dontMove)
             return;
         
         Run();
@@ -110,5 +111,39 @@ public class PlayerController : MonoBehaviour
         PlayerManager.Instance.smallCharacter.SetActive(false);
         PlayerManager.Instance.bigCharacter.transform.position = position;
         PlayerManager.Instance.bigCharacter.SetActive(true);
+    }
+
+    private void CharacterShrinkage()
+    {
+        var position = PlayerManager.Instance.bigCharacter.transform.position;
+        PlayerManager.Instance.bigCharacter.SetActive(false);
+        PlayerManager.Instance.smallCharacter.transform.position = position;
+        PlayerManager.Instance.smallCharacter.SetActive(true);
+    }
+
+    private void CharacterDontMove()
+    {
+        dontMove = true;
+    }
+
+    private void CharacterMove()
+    {
+        dontMove = false;
+    }
+
+    private void UnTouchable()
+    {
+        PlayerManager.Instance.bigCharacter.GetComponent<Rigidbody2D>().gravityScale = 0;
+        PlayerManager.Instance.smallCharacter.GetComponent<Rigidbody2D>().gravityScale = 0;
+        PlayerManager.Instance.bigCharacter.GetComponent<BoxCollider2D>().enabled = false;
+        PlayerManager.Instance.smallCharacter.GetComponent<BoxCollider2D>().enabled = false;
+    }
+    
+    private void Touchable()
+    {
+        PlayerManager.Instance.bigCharacter.GetComponent<Rigidbody2D>().gravityScale = 5;
+        PlayerManager.Instance.smallCharacter.GetComponent<Rigidbody2D>().gravityScale = 5;
+        PlayerManager.Instance.bigCharacter.GetComponent<BoxCollider2D>().enabled = true;
+        PlayerManager.Instance.smallCharacter.GetComponent<BoxCollider2D>().enabled = true;
     }
 }

@@ -14,7 +14,6 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject heartParent;
     [SerializeField] private List<GameObject> life;
     [SerializeField] private Rigidbody2D playerRigid;
-    [SerializeField] private Animator animator;
     [SerializeField] private Collider2D fallTrigger;
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private Canvas canvasGameOver;
@@ -84,14 +83,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (playerIsBig)
         {
-            Debug.Log("big");
+            bigCharacter.GetComponent<Animator>().SetBool("IsShrinkage", true);
             playerIsBig = false;
             return;
         }
         
         isDead = true;
         
-        animator.SetBool("IsDead", true);
+        smallCharacter.gameObject.GetComponent<Animator>().SetBool("IsDead", true);
         playerRigid.velocity = Vector2.up * 15f;
         fallTrigger.enabled = false;
         playerCollider.enabled = false;
