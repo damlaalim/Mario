@@ -25,14 +25,18 @@ public class BlockController : MonoBehaviour
     {
         playerIsBig = PlayerManager.Instance.playerIsBig;
 
-        col.GetComponent<Rigidbody2D>().velocity = Vector2.down * 15f;
+        col.GetComponent<Rigidbody2D>().velocity = Vector2.down * 0.3f;
 
         BlockTypeSwitch();
-        
     }
 
     private void BlockTypeSwitch()
     {
+        if (playerIsBig)
+            PlayerManager.Instance.bigCharacter.GetComponent<Animator>().SetBool("IsJumping", false);
+        else
+            PlayerManager.Instance.smallCharacter.GetComponent<Animator>().SetBool("IsJumping", false);    
+        
         if (blockIsChange)
             return;
         

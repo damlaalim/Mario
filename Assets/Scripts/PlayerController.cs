@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator animator;
 
     private float jumpTime;
-    private bool jumping;
     private bool jumpCancelled;
     private bool dontMove = false;
 
@@ -39,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(jumpCancelled && jumping && _rigidbody.velocity.y > 0)
+        if(jumpCancelled && animator.GetBool("IsJumping") && _rigidbody.velocity.y > 0)
         {
             _rigidbody.AddForce(Vector2.down * cancelRate);
         }
@@ -55,21 +54,21 @@ public class PlayerController : MonoBehaviour
     } 
     
     private void Jump()
-    {
+    { 
+
         if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             animator.SetBool("IsJumping", true);
 
             float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y * _rigidbody.gravityScale));
             _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            jumping = true;
             jumpCancelled = false;
             jumpTime = 0;
 
             _isGrounded = false;
         }
         
-        if (jumping)
+        if (animator.GetBool("IsJumping"))
         {
             animator.SetBool("IsJumping", true);
 
@@ -80,7 +79,7 @@ public class PlayerController : MonoBehaviour
             }
             if (jumpTime > buttonTime)
             {
-                jumping = false;
+                animator.SetBool("IsJumping", false);
             }
             _isGrounded = false;
         }

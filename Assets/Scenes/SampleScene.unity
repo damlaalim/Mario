@@ -9018,7 +9018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 5
+  jumpHeight: 3
   buttonTime: 0.5
   cancelRate: 100
   animator: {fileID: 876261841}
@@ -19951,7 +19951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpHeight: 5
+  jumpHeight: 3
   buttonTime: 0.5
   cancelRate: 100
   animator: {fileID: 1952930250}
