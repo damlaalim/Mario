@@ -81,13 +81,6 @@ public class PlayerManager : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (playerIsBig)
-        {
-            bigCharacter.GetComponent<Animator>().SetBool("IsShrinkage", true);
-            playerIsBig = false;
-            return;
-        }
-        
         isDead = true;
         
         smallCharacter.gameObject.GetComponent<Animator>().SetBool("IsDead", true);
