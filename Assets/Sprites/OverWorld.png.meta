@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -76,129 +76,9 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
-    - serializedVersion: 2
-      name: Pipe
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 96
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 46e99603e020687488aae0ce3dcdc9b2
-      internalID: -2116644927
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cloud
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 74
-        width: 30
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0f1ebd2221d38e4fa5572e83e5919d0
-      internalID: 831863097
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bush
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 16
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75d068d35ed7c074d88b301df9fc0e3d
-      internalID: -278660640
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mountain
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 80
-        height: 35
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc63f2a607e25254cb642b01ba423e32
-      internalID: 910571880
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     - serializedVersion: 2
       name: Ground
       rect:
@@ -214,35 +94,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97df3d3cb9960b4468514a6cd5bcd7db
-      internalID: 1449066365
+      spriteID: 1527f090e613e4847a8ca7030a95ccdf
+      internalID: -1543828976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UnsecretBlock
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 112
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ce88eb5a2dff0e44cb2c4336370e9de9
-      internalID: 1762982289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StructureBlock
+      name: structure
       rect:
         serializedVersion: 2
         x: 16
@@ -256,14 +115,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ecff480be7b12441a98b950e3393f0a
-      internalID: 649760925
+      spriteID: db5f21e0ce04e66498d16fd8d9d3cb87
+      internalID: 1030067077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BreakableBlock
+      name: unsecret
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6754541a7015c54e9d384e34447f5fa
+      internalID: -1763566713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: breakable
       rect:
         serializedVersion: 2
         x: 48
@@ -277,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c779d421c1b14a84482aec15c6c70ec7
-      internalID: -1787566104
+      spriteID: f0474a1c7befcef4b935d0b7ea48f3b4
+      internalID: -1255385123
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SecretBlock
+      name: secret
       rect:
         serializedVersion: 2
         x: 64
@@ -298,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8795fb806d42984f9e026331cb38cfe
-      internalID: 1370514915
+      spriteID: c5f029851c93033429c0deec94886423
+      internalID: 426524950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breaking_1
+      name: pipe
       rect:
         serializedVersion: 2
-        x: 20
-        y: 100
-        width: 8
-        height: 8
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37a3dc8e3e77e4f44bbc3afd9c072a5e
-      internalID: -1294249831
+      spriteID: abb317da462a76344a58de8474cc41b7
+      internalID: 677546549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Breaking_0
+      name: cloud
       rect:
         serializedVersion: 2
-        x: 4
-        y: 100
-        width: 8
-        height: 8
+        x: 89
+        y: 74
+        width: 30
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -340,8 +220,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 528d4eb7b2d22fa4b9d3dcd67bc84084
-      internalID: -932897358
+      spriteID: 4d1d5b9bfc03e6d43a44808d79752c9e
+      internalID: -2032455893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bush
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 16
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013f28e61d324bb43b01b02995ba6173
+      internalID: 254960255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mountain
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 80
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82dfbe22b2e58e44aa09e8daf3d0d4d4
+      internalID: -1929829450
       vertices: []
       indices: 
       edges: []
@@ -357,17 +279,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SecretBlock: 1370514915
-      UnsecretBlock: 1762982289
-      Cloud: 831863097
-      Mountain: 910571880
-      Breaking_0: -932897358
-      Breaking_1: -1294249831
-      BreakableBlock: -1787566104
-      Bush: -278660640
-      Ground: 1449066365
-      Pipe: -2116644927
-      StructureBlock: 649760925
+      cloud: -2032455893
+      secret: 426524950
+      unsecret: -1763566713
+      mountain: -1929829450
+      structure: 1030067077
+      breakable: -1255385123
+      Ground: -1543828976
+      bush: 254960255
+      pipe: 677546549
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -76,6 +76,11 @@ MonoBehaviour:
   blockSprite: {fileID: 0}
   newBlock: {fileID: 0}
   blockUpTime: 0.1
+  blockIsChange: 0
+  Coin: {fileID: 0}
+  RedMushroom: {fileID: 0}
+  item: 0
+  particle: {fileID: 511876797708096064, guid: f27e122fdba47bd44b969edf1c90095d, type: 3}
 --- !u!1 &8495546872273989674
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1787566104, guid: 08e3b0aaafef2c349b649033a61f7c8e, type: 3}
+  m_Sprite: {fileID: -1255385123, guid: 08e3b0aaafef2c349b649033a61f7c8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

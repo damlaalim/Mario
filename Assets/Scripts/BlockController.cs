@@ -14,6 +14,8 @@ public class BlockController : MonoBehaviour
     [SerializeField] private GameObject Coin;
     [SerializeField] private GameObject RedMushroom;
     [SerializeField] private InsideItem item;
+    [SerializeField] private GameObject particle;
+    
     private bool playerIsBig;
 
     private void Awake()
@@ -63,12 +65,17 @@ public class BlockController : MonoBehaviour
             Destroy(block);
         }
 
+        Instantiate(particle, transform.position, Quaternion.identity);
+        
         PlayerManager.Instance.score += GameManager.Instance.blockBreakScore;
         CanvasManager.Instance.TextScoreChange();
     }
 
     private void BlockChange()
     {
+        blockIsChange = true;
+        blockSprite.sprite = newBlock;
+        
         if (item == InsideItem.Coin)
         {
             CoinSettings();
@@ -77,9 +84,6 @@ public class BlockController : MonoBehaviour
         {
             RedMushroomSettings();
         }
-        
-        blockIsChange = true;
-        blockSprite.sprite = newBlock;
     }
 
     private void CoinSettings()

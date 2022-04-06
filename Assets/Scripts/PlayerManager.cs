@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Collider2D playerCollider;
     [SerializeField] private Canvas canvasGameOver;
 
+    public Animator princess;
     public GameObject smallCharacter;
     public GameObject bigCharacter;
     

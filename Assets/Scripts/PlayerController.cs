@@ -46,6 +46,22 @@ public class PlayerController : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D col)
     {
+        if (col.gameObject.tag == "princess")
+        {
+            switch (PlayerManager.Instance.playerIsBig)
+            {
+                case true:
+                    Debug.Log("Oyh");
+                    PlayerManager.Instance.princess.SetBool("Oyh", true);
+                    // PlayerManager.Instance.princess.SetBool("love", true);
+                    break;
+                case false:
+                    Debug.Log("Iyh");
+                    PlayerManager.Instance.princess.SetBool("Iyh", true);
+                    // PlayerManager.Instance.princess.SetBool("dead", true);
+                    break;
+            }
+        }
         if (col.gameObject.tag == "Floor")
         {
             animator.SetBool("IsJumping", false);

@@ -120,5 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   moveIsRight: 1
-  score: 200
   isMove: 0
